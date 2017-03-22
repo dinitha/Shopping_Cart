@@ -8,10 +8,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="css/home.css">
+        <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+        <!-- home style -->
+        <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
+        <script src="<c:url value="/resources/js/home.js" />"></script>
 
 
     </head>
@@ -21,13 +22,13 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="user-menu">
-                        <ul>
+
                             <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
                             <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
-                        </ul>
+
                     </div>
                 </div>
 
@@ -57,5 +58,10 @@
             </div>
         </div>
     </div> <!-- End header area -->
+
+
+    <div class="shopping-cart-item">
+
+    </div>
     </body>
 </html>
