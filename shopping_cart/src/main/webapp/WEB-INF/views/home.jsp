@@ -3,6 +3,7 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,6 +13,7 @@
         <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
         <!-- home style -->
         <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
+        <script src="<c:url value="/resources/js/jquery-3.2.0.js" />"></script>
         <script src="<c:url value="/resources/js/home.js" />"></script>
 
 
@@ -59,9 +61,30 @@
         </div>
     </div> <!-- End header area -->
 
+<form:form modelAttribute="availableItems"  >
+    <div class="simpleCart_shelfItem" id="shopping_item">
 
-    <div class="shopping-cart-item">
+ <c:forEach items="${ItemList}" var="item" varStatus="count">
+    <h2 class="item_name"> ${item.itemName}</h2>
+        <p>    <select class="item_size">
+            <option value="Small"> Small </option>
+            <option value="Medium"> Medium </option>
+            <option value="Large"> Large </option>
+        </select><br>
+            <input type="text" value="1" class="item_Quantity"><br>
+            <img src={item.itemImage};base64  ><br>
+            <span class="item_description">${item.itemDescription}</span><br>
+            <span class="item_available_quantity">${item.availableQuantity}</span><br>
+            <span class="item_price">${item.itemPrice}</span><br>
 
+            <a class="item_add" href="javascript:;"> Add to Cart </a></p>
+
+</c:forEach>
+    </div>
+
+</form:form>
+    <div class="json_print">
+        <p class="json_class" ></p>
     </div>
     </body>
 </html>
