@@ -1,13 +1,20 @@
 package com.mywork.config;
 
+
+import com.mywork.dao.AvailableItemsDao;
+import com.mywork.dao.AvailableItemsDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import javax.sql.DataSource;
+
 
 @Configuration
 @ComponentScan(basePackages="com.mywork")
@@ -26,6 +33,20 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+	@Bean
+	public DataSource getDataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/shopping_cart");
+		dataSource.setUsername("root");
+		dataSource.setPassword("root");
 
-	
+		return dataSource;
+	}
+
+	@Bean
+	public AvailableItemsDao getAvailableItemsDao() {
+		return new AvailableItemsDaoImpl(getDataSource());
+	}
+
 }
