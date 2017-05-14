@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AvailableItemsDaoImpl implements AvailableItemsDao {
     private JdbcTemplate jdbcTemplate;
-
+   //TODO : new key word remove??
     public AvailableItemsDaoImpl(DataSource dataSource) {
             jdbcTemplate=new JdbcTemplate(dataSource);
     }
